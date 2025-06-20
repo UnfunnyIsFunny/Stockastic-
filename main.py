@@ -117,6 +117,16 @@ def preprocess():
             print(df.head())
         else:
             print("No articles processed or no data collected.")
+def union():
+
+    article = pd.read_csv('structured_wsj_articles.csv')
+    for file in os.listdir('Stocks'):
+        stock = pd.read_csv(f"Stocks/{file}")
+        merge = pd.concat((article, stock), axis=1)
+        merge.to_csv(f'Training Set {file}')
+        print(merge)
+
+
 
     # Use a breakpoint in the code line below to debug your script.
     # print(f'Hi, {name}')  # Press Ctrl+8 to toggle the breakpoint.
@@ -132,6 +142,8 @@ def preprocess():
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    preprocess()
+    #preprocess()
+    union()
+
 
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
