@@ -120,11 +120,14 @@ def preprocess():
 def union():
 
     article = pd.read_csv('structured_wsj_articles.csv')
+    #print(article['Date'])
     for file in os.listdir('Stocks'):
         stock = pd.read_csv(f"Stocks/{file}")
+        print(stock['Date'])
         merge = pd.concat((article, stock), axis=1)
         merge.to_csv(f'Training Set {file}')
-        print(merge)
+
+        #print(merge)
 
 
 
